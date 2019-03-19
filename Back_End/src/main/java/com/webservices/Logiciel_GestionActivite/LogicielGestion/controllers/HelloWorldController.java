@@ -1,12 +1,13 @@
 package com.webservices.Logiciel_GestionActivite.LogicielGestion.controllers;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,13 +19,6 @@ import com.webservices.Logiciel_GestionActivite.LogicielGestion.model.Employees;
 @CrossOrigin(origins = "http://localhost:4200")
 
 public class HelloWorldController {
-	
-	
-	
-	//GET
-		//URL - /hello-world
-		//method - "Hello World"
-		
 	
 		private List<Employees> employees = createList();
 		
@@ -46,16 +40,26 @@ public class HelloWorldController {
 			return tempEmployees;
 		}
 
-		
-			
-		
-		
-		@RequestMapping(method=RequestMethod.GET, path="/hello-world")
-		 public String helloWorld(){
-			 return "Hello World";
-
+		@DeleteMapping(path = { "/employees/{id}" })
+		public Employees delete(@PathVariable("id") int id) {
+			Employees deletedEmp = null;
+			for (Employees emp : employees) {
+				if (emp.getEmpId().equals(id)) {
+					employees.remove(emp);
+					deletedEmp = emp;
+					break;
+				}
+			}
+			return deletedEmp;
 		}
-		
+
+		@PostMapping
+		public Employees create(@RequestBody Employees user) {
+			employees.add(user);
+			System.out.println(employees);
+			return user;
+		}
+
 		
 		@RequestMapping(value = "/employees", method = RequestMethod.GET, produces = "application/json")
 		public List<Employees> firstPage() {
