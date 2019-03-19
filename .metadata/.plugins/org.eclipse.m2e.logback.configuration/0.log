@@ -1,0 +1,3 @@
+2019-03-18 15:36:25,570 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2019-03-18 15:37:00,603 [Worker-1: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using null lifecycle mapping for MavenProject: io.spring.springStart:start-api:0.0.1-SNAPSHOT @ E:\Angular7-SpringBoot\Back_End\pom.xml.
+2019-03-18 15:37:06,186 [Worker-1: Importing Maven projects] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 10 sec
