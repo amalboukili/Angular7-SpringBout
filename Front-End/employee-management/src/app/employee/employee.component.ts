@@ -8,7 +8,7 @@ import { HttpClientService, Employee } from '../service/http-client.service';
 })
 export class EmployeeComponent implements OnInit {
 
-  employees:string[];
+  employees:Employee[];
    
   constructor(
     private httpClientService:HttpClientService
@@ -28,8 +28,8 @@ handleSuccessfulResponse(response)
 deleteEmployee(employee: Employee): void {
   this.httpClientService.deleteEmployee(employee)
     .subscribe( data => {
-      this.employees = this.employees.filter(u => u !== employee);
-    })
+     this.employees = this.employees.filter(u => u !== employee);
+  })
 };
 
 }
